@@ -1,1 +1,43 @@
-"Hello World" 
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kunal Shrivastav</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Welcome to My Personal Website</h1>
+
+    <div class="section">
+        <h2>Biography</h2>
+        <p>Second-year Computer Science student at the University of California Riverside.
+
+            Passionate in software development, including device driver development,
+            remote debugging, Win32 GUI programming, dynamic link libraries for the essential functions in Windows-based applications, and the incorporation of Artificial Intelligence into modern software. 
+            Programming skills include C#, C++, C, Python, and JavaScript.</p>
+    </div>
+
+    <div class="section">
+        <h2>Resume</h2>
+        <p>Here is my professional experience...</p>
+        <!-- Add a section for your resume PDF -->
+        <iframe src="https://drive.google.com/file/d/1yCcecPWN7dd9gr3O6wlDzDCENQp6nSFD/preview" type="application/pdf"></iframe>
+    </div>
+
+    <div class="section">
+        <h2>Contact Details</h2>
+        <p>You can reach me at kshri003@ucr.edu</p>
+    </div>
+    <button id="mode-switcher">Switch to Dark Mode</button>
+
+    <script>
+       var isDarkMode = false;
+
+       document.getElementById('mode-switcher').addEventListener('click', function() {
+        isDarkMode = !isDarkMode;
+        document.body.classList.toggle('dark-mode', isDarkMode);
+        this.textContent = isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+
+       });
+    </script>
+</body>
+</html>
