@@ -2,8 +2,8 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f2f2f2;
     color: #444;
-    margin: 0;
-    padding: 0;
+    margin: 5px;
+    padding: 5px;
 }
 
 .section {
@@ -12,6 +12,10 @@ body {
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
 }
 
 h1, h2, h3 {
@@ -34,4 +38,9 @@ body.dark-mode .section {
 
 body.dark-mode h1, body.dark-mode h2, body.dark-mode h3 {
     color: #0078d4;
+}
+
+iframe {
+    width:600px;
+    height:750px;
 }
