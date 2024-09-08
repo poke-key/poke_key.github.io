@@ -156,4 +156,37 @@
 			}
 		});
 
+	// Form submission handling
+	document.addEventListener('DOMContentLoaded', function() {
+		const form = document.getElementById('contact-form');
+		
+		form.addEventListener('submit', function(e) {
+			e.preventDefault();
+			
+			const formData = new FormData(form);
+			const action = form.getAttribute('action');
+			
+			fetch(action, {
+				method: 'POST',
+				body: formData,
+				headers: {
+					'Accept': 'application/json'
+				}
+			})
+			.then(response => response.json())
+			.then(data => {
+				if (data.ok) {
+					alert('Thank you! Your message has been sent successfully.');
+					form.reset();
+				} else {
+					alert('Oops! There was a problem sending your message. Please try again later.');
+				}
+			})
+			.catch(error => {
+				console.error('Error:', error);
+				alert('Oops! There was a problem sending your message. Please try again later.');
+			});
+		});
+	});
+
 })(jQuery);
