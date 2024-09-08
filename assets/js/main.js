@@ -1,8 +1,4 @@
-/*
-	Read Only by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+import { createClient } from 'https://cdn.skypack.dev/@formspree/core';
 
 (function($) {
 
@@ -156,37 +152,29 @@
 			}
 		});
 
-	// Form submission handling
-	document.addEventListener('DOMContentLoaded', function() {
-		const form = document.getElementById('contact-form');
-		
-		form.addEventListener('submit', function(e) {
-			e.preventDefault();
-			
-			const formData = new FormData(form);
-			const action = form.getAttribute('action');
-			
-			fetch(action, {
-				method: 'POST',
-				body: formData,
-				headers: {
-					'Accept': 'application/json'
-				}
-			})
-			.then(response => response.json())
-			.then(data => {
-				if (data.ok) {
-					alert('Thank you! Your message has been sent successfully.');
-					form.reset();
-				} else {
-					alert('Oops! There was a problem sending your message. Please try again later.');
-				}
-			})
-			.catch(error => {
-				console.error('Error:', error);
-				alert('Oops! There was a problem sending your message. Please try again later.');
-			});
-		});
-	});
-
 })(jQuery);
+
+// Form submission handling
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('contact-form');
+  const formspree = createClient('xdknjbnz');
+  
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(form);
+    
+    try {
+      const response = await formspree.submitForm(formData, 'xdknjbnz');
+      if (response.success) {
+        alert('Thank you! Your message has been sent successfully.');
+        form.reset();
+      } else {
+        alert('Oops! There was a problem sending your message. Please try again later.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Oops! There was a problem sending your message. Please try again later.');
+    }
+  });
+});
